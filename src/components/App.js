@@ -18,26 +18,26 @@ class App extends Component {
     this.createPost = this.createPost.bind( this );
   }
   
-  componentDidMount() {
+  componentDidMount () {
     axios.get("https://practiceapi.devmountain.com/api/posts").then(results => {
       this.setState({posts: results.data});
     });
   } 
 
-  updatePost( id, text ) {
+  updatePost ( id, text ) {
   axios.put('https://practiceapi.devmountain.com/api/posts?id={ id }', {text})
         .then( results => {this.setState({ posts: results.data });
       });
   }
 
-  deletePost( id ) {
+  deletePost ( id ) {
     axios.delete( 'https://practiceapi.devmountain.com/api/posts?id={ id }')
           .then( results => { 
           this.setState({ posts: results.data });
           });
   }
 
-  createPost( text ) {
+  createPost ( text ) {
     axios.post('https://practiceapi.devmountain.com/api/posts', { text })
           .then( results => {
             this.setState({ posts: results.data });
